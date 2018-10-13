@@ -270,7 +270,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Лабораторная работа № 1. Дискретные марковские процессы";
             ((System.ComponentModel.ISupportInitialize)(this.strategyCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stateCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stepCount)).EndInit();
@@ -303,4 +303,3 @@
         private System.Windows.Forms.Label label7;
     }
 }
-

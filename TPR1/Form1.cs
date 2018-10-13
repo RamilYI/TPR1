@@ -239,7 +239,7 @@ namespace TPR1
         private static string pathDefinition()
         {
             SaveFileDialog openFileDialog = new SaveFileDialog();
-            string path = "";
+            string path = "нажмите сохранить";
             openFileDialog.FileName = path;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -256,7 +256,8 @@ namespace TPR1
         private static string folderdefinition()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            string path = "";
+            string path = "откройте любой файл";
+            openFileDialog.FileName = path;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 path = Path.GetDirectoryName(openFileDialog.FileName);

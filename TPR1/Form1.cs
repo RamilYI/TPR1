@@ -231,17 +231,14 @@ namespace TPR1
             drawgraph();
         }
 
-        private double[,] fixlists(Matrix m, double[,] n, int K, List<Tuple<double[,], int>> X, List<DataGridView> Y)
+        private void fixlists(Matrix m, double[,] n, int K, List<Tuple<double[,], int>> X, List<DataGridView> Y)
         {
             X.Clear();
             for (int i = 0; i < K; i++)
             {
                 n = m.readtable(Y[i]);
-                //int z;
                 X.Add(new Tuple<double[,], int>(n, i));
             }
-
-            return n;
         }
 
     }

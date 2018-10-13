@@ -38,14 +38,14 @@
             this.data.Dock = System.Windows.Forms.DockStyle.Fill;
             this.data.Location = new System.Drawing.Point(0, 0);
             this.data.Name = "data";
-            this.data.Size = new System.Drawing.Size(456, 380);
+            this.data.Size = new System.Drawing.Size(439, 380);
             this.data.TabIndex = 0;
             // 
             // Dialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(456, 380);
+            this.ClientSize = new System.Drawing.Size(439, 380);
             this.Controls.Add(this.data);
             this.Name = "Dialog";
             this.Text = "Результаты";

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -15,7 +17,6 @@ namespace TPR1
         private List<Tuple<int,double,int, int>> result = new List<Tuple<int, double, int, int>>(); //strategy, value, index, state
         private List<double> maxnums = new List<double>();
         private int strategyC, stateC;
-
         private delegate int numericF(NumericUpDown x);
 
         public Form1()
@@ -96,13 +97,15 @@ namespace TPR1
             try
             {
                 drawgraph();
+                calc.Enabled = true;
+                loadTable.Enabled = true;
             }
             catch (Exception exception)
             {
                 MessageBox.Show("" + exception + "\n\n" + "введите данные!");
             }
 
-            calc.Enabled = true;
+
         }
 
 
@@ -223,6 +226,82 @@ namespace TPR1
             fixlists(m, n, K, objListProb, saveDataGridProb);
             fixlists(m, n, K, objListVal, saveDataGridVal);
             drawgraph();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string path = pathDefinition();
+            XmlOperations.saveToXml(propabilityMatrix, strategyC, "propabilitymatrix", path);
+            XmlOperations.saveToXml(valueMatrix, strategyC, "valuematrix", path);
+            loadTable.Enabled = false;
+        }
+
+        private static string pathDefinition()
+        {
+            SaveFileDialog openFileDialog = new SaveFileDialog();
+            string path = "";
+            openFileDialog.FileName = path;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                path = Path.GetDirectoryName(openFileDialog.FileName);
+            }
+            else
+            {
+                path = Application.StartupPath;
+            }
+
+            return path;
+        }
+
+        private static string folderdefinition()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            string path = "";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                path = Path.GetDirectoryName(openFileDialog.FileName);
+            }
+            else
+            {
+                path = Application.StartupPath;
+            }
+
+            return path;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string path = folderdefinition();
+            DialogResult dialogResult = MessageBox.Show("Ваши текущие таблицы будут стёрты. Вы готовы продолжить?", "Предупреждение", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                rebuildMatrix(valueMatrix);
+                rebuildMatrix(propabilityMatrix);
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
+            XmlOperations.readXml(propabilityMatrix, "propabilitymatrix", path);
+            XmlOperations.readXml(valueMatrix, "valuematrix", path);
+            loadTable.Enabled = false;
+        }
+
+        private void rebuildMatrix(TabControl x)
+        {
+            for (int i = 0; i < strategyC; i++)
+            {
+                DataGridView dataGridView = new DataGridView();
+                dataGridView = (DataGridView) x.TabPages[i].Controls[0];
+                dataGridView.Columns.Clear();
+                dataGridView.Rows.Clear();
+            }
+        }
+
+        private void exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void fixlists(Matrix m, double[,] n, int K, List<Tuple<double[,], int>> X, List<DataGridView> Y)

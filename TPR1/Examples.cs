@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace TPR1
 {
@@ -81,7 +82,13 @@ namespace TPR1
                 IntPtr gvc = gvContext();
                 if (gvc == IntPtr.Zero)
                     throw new Exception("Failed to create Graphviz context.");
-                
+
+                Encoding utf8 = Encoding.GetEncoding("utf-8");
+                Encoding win1251 = Encoding.GetEncoding("windows-1251");
+                byte[] utf8Bytes = win1251.GetBytes(source);
+                byte[] win1251Bytes = Encoding.Convert(win1251, utf8, utf8Bytes);
+                source = win1251.GetString(win1251Bytes);
+
                 IntPtr g = agmemread(source);
                 if (g == IntPtr.Zero)
                     throw new Exception("Failed to create graph from source. Check for syntax errors.");

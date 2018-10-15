@@ -17,13 +17,13 @@ namespace TPR1
         private List<Tuple<int,double,int, int>> result = new List<Tuple<int, double, int, int>>(); //strategy, value, index, state
         private List<double> maxnums = new List<double>();
         private int strategyC, stateC;
-        private delegate int numericF(NumericUpDown x);
+        public delegate int numericF(NumericUpDown x);
 
         public Form1()
         {
             InitializeComponent();
         }
-
+        
         private int numericCount(NumericUpDown x)
         {
             return Int32.Parse(x.Value.ToString());
@@ -40,7 +40,6 @@ namespace TPR1
             catch (Exception e)
             {
                 MessageBox.Show("" + e + "\n\n" + "Введите данные!");
-
             }
         }
 
@@ -96,7 +95,7 @@ namespace TPR1
             fillcombobox();
             try
             {
-                drawgraph();
+                drawGraph();
                 calc.Enabled = true;
                 loadTable.Enabled = true;
             }
@@ -107,9 +106,7 @@ namespace TPR1
 
 
         }
-
-
-
+        
         private void clearAllMatrixandResults()
         {
             clearTabControls(valueMatrix);
@@ -123,9 +120,9 @@ namespace TPR1
             saveDataGridVal.Clear();
         }
 
-        private void drawgraph()
+        private void drawGraph()
         {
-            String graph = @"digraph ";
+            String graph = "digraph ";
             double[,] n;
             int strategyselect = changeStrategy.SelectedIndex;
             n = objListProb[strategyselect].Item1;
@@ -163,7 +160,7 @@ namespace TPR1
                 q.Add(m.qcalculation(objListProb, objListVal, i));
             }
             vCalc(q, numericCount);
-            Dialog dialog = new Dialog();
+            Dialog dialog = new Dialog(stateC, numericCount(stepCount), result);
             dialog.filltable(result);
             dialog.Show();
         }
@@ -189,10 +186,7 @@ namespace TPR1
                 
             }
         }
-
-
-
-
+        
         private double summeth(int i, List<Tuple<double[,], int>> objListProb, List<Double> maxnums, int j, int k)
         {
             if (i == 0) return 0.0;
@@ -211,7 +205,7 @@ namespace TPR1
 
         private void changeStrategy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            drawgraph();
+            drawGraph();
         }
 
         private void fixMatrixValues()
@@ -225,7 +219,7 @@ namespace TPR1
 
             fixlists(m, n, K, objListProb, saveDataGridProb);
             fixlists(m, n, K, objListVal, saveDataGridVal);
-            drawgraph();
+            drawGraph();
         }
 
         private void button1_Click(object sender, EventArgs e)

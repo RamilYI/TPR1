@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.data = new System.Windows.Forms.DataGridView();
+            this.graphMaker = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,11 +42,23 @@
             this.data.Size = new System.Drawing.Size(439, 380);
             this.data.TabIndex = 0;
             // 
+            // graphMaker
+            // 
+            this.graphMaker.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.graphMaker.Location = new System.Drawing.Point(252, 345);
+            this.graphMaker.Name = "graphMaker";
+            this.graphMaker.Size = new System.Drawing.Size(177, 23);
+            this.graphMaker.TabIndex = 1;
+            this.graphMaker.Text = "Результирующий граф";
+            this.graphMaker.UseVisualStyleBackColor = true;
+            this.graphMaker.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Dialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(439, 380);
+            this.Controls.Add(this.graphMaker);
             this.Controls.Add(this.data);
             this.Name = "Dialog";
             this.Text = "Результаты";
@@ -57,5 +70,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView data;
+        private System.Windows.Forms.Button graphMaker;
     }
 }

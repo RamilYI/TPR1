@@ -54,10 +54,17 @@ namespace TPR1
             {
                 string path = Path.Combine(pathfiles, name + i + ".xml");
                 DataSet dataSet = new DataSet();
-                dataSet.ReadXml(path, XmlReadMode.ReadSchema);
-                DataGridView dataGridView = new DataGridView();
-                dataGridView = (DataGridView)tabControl.TabPages[i].Controls[0];
-                dataGridView.DataSource = dataSet.Tables[0];
+                try
+                {
+                    dataSet.ReadXml(path, XmlReadMode.ReadSchema);
+                    DataGridView dataGridView = new DataGridView();
+                    dataGridView = (DataGridView)tabControl.TabPages[i].Controls[0];
+                    dataGridView.DataSource = dataSet.Tables[0];
+                }
+                catch (Exception e)
+                {
+                    tabControl.TabPages.RemoveAt(i);
+                }
             }
         }
 

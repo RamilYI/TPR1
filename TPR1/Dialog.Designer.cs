@@ -44,8 +44,8 @@
             // 
             // graphMaker
             // 
-            this.graphMaker.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.graphMaker.Location = new System.Drawing.Point(250, 336);
+            this.graphMaker.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.graphMaker.Location = new System.Drawing.Point(236, 335);
             this.graphMaker.Name = "graphMaker";
             this.graphMaker.Size = new System.Drawing.Size(177, 23);
             this.graphMaker.TabIndex = 1;

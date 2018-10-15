@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TPR1
@@ -19,9 +13,10 @@ namespace TPR1
 
         internal void drawMainGraph(int stateC, int stepCount, List<Tuple<int, double, int, int>> result)
         {
-            int totalizer = 0;
             String graph = "digraph ";
-            graph += "{\n";
+            graph += "{\n" +
+                     "forcelabels=true;\n";
+            
             graph += "{\n";
             graph += "node [shape = plaintext, fontsize = 16];\n";
             for (int i = 0; i <= stepCount; i++)
@@ -36,8 +31,7 @@ namespace TPR1
             {
                 graph += $"subgraph cluster_{i} ";
                 graph += "{\n";
-                graph += $"label=\"state {i}\";\n" +
-                         $"node [shape=circle]\n";
+                graph += $"node [shape=circle]\n";
                 
                 for (int k = 0; k <= stepCount; k++)
                 {
@@ -47,7 +41,7 @@ namespace TPR1
 
                 for (int j = 0; j < stepCount; j++)
                 {
-                   graph += $"{i}{j} ->{i}{j + 1}[label = \"{result[(i - 1) + stepCount * (i -1)].Item3}\", weight=\"{result[(i - 1) + stepCount * (i - 1)].Item3}\"];\n";
+                   graph += $"{i}{j} ->{i}{j + 1}[xlabel = \"{result[(i - 1) + stepCount * (i -1)].Item3}\", weight=\"{result[(i - 1) + stepCount * (i - 1)].Item3}\"];\n";
                 }
 
                 graph += "}\n";
@@ -55,7 +49,7 @@ namespace TPR1
 
             graph += "}";
             graphBox.SizeMode = PictureBoxSizeMode.AutoSize;
-            graphBox.Image = Examples.Graphviz.RenderImage(graph, "jpg");
+            graphBox.Image = Examples.Run(graph);
         }
     }
 }

@@ -27,7 +27,6 @@ namespace TPR1
             data.Columns[1].HeaderText = "максимальное значение";
             data.Columns[2].HeaderText = "номер стратегии";
             data.Columns[3].HeaderText = "номер состояния";
-            int meme = 5;
         }
 
         private void button1_Click(object sender, EventArgs e)

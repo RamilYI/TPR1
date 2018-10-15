@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -129,7 +128,7 @@ namespace TPR1
 
             graph = makeGraph(graph, stateC, n);
             graphImageLtd.SizeMode = PictureBoxSizeMode.AutoSize;
-            graphImageLtd.Image = Examples.Graphviz.RenderImage(graph, "jpg");
+            graphImageLtd.Image = Examples.Run(graph);
         }
 
         private static string makeGraph(string graph, int stateCounts, double[,] n)

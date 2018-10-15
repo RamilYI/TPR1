@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Data;
 using System.Windows.Forms;
 using System.IO;
 
@@ -61,7 +54,7 @@ namespace TPR1
                     dataGridView = (DataGridView)tabControl.TabPages[i].Controls[0];
                     dataGridView.DataSource = dataSet.Tables[0];
                 }
-                catch (Exception e)
+                catch
                 {
                     tabControl.TabPages.RemoveAt(i);
                 }

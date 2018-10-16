@@ -38,7 +38,7 @@ namespace TPR1
                     graph += $"{i}{k} [label=\"state{i}\"];\n";
 
                 }
-                //че-то не то
+
                 for (int j = 0; j < (stepCount); j++)
                 {
                     graph += $"{i}{j} ->{i}{j + 1}[xlabel = \"{result[j + stateC*j].Item3}\", weight=\"{result[j + stateC * j].Item3}\"];\n";

@@ -39,9 +39,11 @@ namespace TPR1
 
                 }
 
+                int count = 0;
                 for (int j = 0; j < (stepCount); j++)
                 {
-                    graph += $"{i}{j} ->{i}{j + 1}[xlabel = \"{result[j + stateC*j].Item3}\", weight=\"{result[j + stateC * j].Item3}\"];\n";
+                    graph += $"{i}{j} ->{i}{j + 1}[xlabel = \"{result[i - 1 + count].Item3}\", weight=\"{result[i - 1 + count].Item3}\"];\n";
+                    count += stateC;
                 }
 
                 graph += "}\n";

@@ -193,7 +193,7 @@ namespace TPR1
             {
                 double sum = 0;
                 double[,] list = new double[stateC, stateC];
-                list = objListProb[j].Item1;
+                list = objListProb[k].Item1;
                     for (int m = 0; m < stateC; m++)
                     {
                         sum += list[j,m] * maxnums[m + stateC * (i - 1)];

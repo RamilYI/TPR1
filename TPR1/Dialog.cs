@@ -24,8 +24,8 @@ namespace TPR1
             data.Columns.Clear();
             data.DataSource = result;
             data.Columns[0].HeaderText = "шаг";
-            data.Columns[1].HeaderText = "максимальное значение";
-            data.Columns[2].HeaderText = "номер стратегии";
+            data.Columns[1].HeaderText = "ожидаемая доходность";
+            data.Columns[2].HeaderText = "номер оптимальной стратегии";
             data.Columns[3].HeaderText = "номер состояния";
         }
 
